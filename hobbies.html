@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <script src="homefuncts.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <meta charset="UTF-8">
+        <title>My Hobbies</title>
+    </head>
+
+    <body>
+        <!--Top navigation bar-->
+        <p class="topnav" >
+            Visit my other pages
+            <a href="index.html">Homepage</a>
+            <a href="career.html">Career</a>
+            <a href="family.html">Family</a>
+            <a href="hobbies.html">Hobbies</a>
+        </p>
+
+        <!--Left column for reference picture-->
+        <div class="column side" style="padding-left: 10px">
+            <img src="images/motorcyle.jpg" alt="Picture">
+        </div>
+
+        <!--Middle column for active content-->
+        <div class="column middle" style="text-align: center">
+            <h1>Variety of Interests!</h1>
+            <div style="text-align: center">
+                <button onclick="gardening()" type="button" class="btn btn-success">Gardening</button>
+                <button onclick="showElement()" type="button" class="btn btn-primary">Golf</button>
+                <button onclick="playVid()" type="button" class="btn btn-danger">Axe Throws</button>
+                <button onclick="lounging()" type="button" class="btn btn-secondary">Lounging</button>
+            </div>
+
+            <p style="text-align: center">
+                 <i>Click on one the buttons to find our more</i>
+            </p>
+
+            <!--Location for user input-->
+            <div id="box" style="visibility: hidden; padding-bottom: 10px" >
+                <form onsubmit="handicap(); return false;" style="text-align: center; padding-top: 20px">
+                    <input type="number" id="q">
+                    <input type="submit" value="Enter Handicap">
+                </form>
+            </div>
+
+            <!--Location for pop up material-->
+            <div id="result">
+                <div id="title" style="font-size: 40px">
+
+                </div>
+                <p id="descript">
+
+                </p>
+                <div class="container" style="padding-left: 10px">
+                    <div id="box1"></div>
+                    <div id="box2"></div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
