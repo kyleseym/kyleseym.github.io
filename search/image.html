@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Image Search</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!--Create the top navigation bar-->
+        <div class="navi">
+            <a href="C:\Users\kyles\Source\Repos\kyleseym\kyleseym.github.io\index.html">Home</a>&nbsp;&nbsp;&nbsp;
+            <a href="index.html">Google Search</a>&nbsp;&nbsp;&nbsp;
+            <a href="advanced.html">Advanced Search</a>
+        </div>
+        <!--Create grid for columns using bootstrap-->
+        <div class="container">
+          <div class="row row-cols-6">
+            <div class="col"></div>
+            <div class="col" style="padding-top: 50px">
+                <!--Create Google name using Century Gothic and colored letters-->
+                <div class="box" style="font-weight: bold; font-size: 95px">
+                    <p style="color: blue">G</p><p style="color: red">o</p><p style="color: orange">o</p><p style="color: blue">g</p><p style="color: green">l</p><p style="color: red">e</p>
+                </div><br>
+                <!--Create the input form for the search-->
+                <form action="https://www.google.com/search" style="overflow:visible" role="search">
+                    <div style="text-align: center">
+                        <input class="box2" type="text" name="q" style="outline: none">
+                    </div>
+                    <div>
+                        <input name="hl" value="EN" type="hidden">
+                        <input name="tbm" value="isch" type="hidden">
+                    </div>
+                    <div class="box">
+                        <input class="box3" type="submit" value="Google Image Search">
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
