@@ -1,0 +1,222 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.box1, .box2 {
+    padding-left: 8px;
+    margin-left: 10px;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 130px;
+}
+
+.box3 {
+    padding-left: 5px;
+    margin-left: 10px;
+    background-color: blue;
+    color: white;
+    display: inline-block;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 50px;
+}
+
+.title_box {
+    height: 70px;
+    width: 100%;
+    background-color: darkblue;
+    text-align: center;
+    color: white;
+    padding-top: 1px;
+    margin-top: 10px;
+}
+
+.grouping {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.categories {
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.form-group, .form-control {
+    width: 100%;
+}
+
+.title_block {
+    margin: 5px;
+    width: 15%;
+    float: left;
+    padding: 5px;
+    height: 80px;
+}
+
+.recipe_input {
+    display: inline-block;
+    margin: 5px;
+    width: 80%;
+    padding: 5px;
+    height: 80px;
+}
+
+.text_box {
+    margin: 5px;
+    padding-left: 10px;
+    height: 25px;
+    display: flex;
+    max-width: 100%;
+    width: 95%;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.text_box2 {
+    margin: 5px;
+    padding-left: 10px;
+    display: inline-block;
+    width: 120px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.text_box3 {
+    margin: 5px;
+    padding-left: 10px;
+    display: inline-block;
+    max-width: 500px;
+    width: 230px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.text_box4 {
+
+}
+
+.text_box:hover, .text_box2:hover, .text_box3:hover {
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+}
+
+.text_area {
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+    float: left;
+}
+
+.instruction_input {
+    border: 1px solid gray;
+    padding-left: 10px;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 95%;
+    height: 200px;
+}
+
+.instruction_input1 {
+    border: 1px solid gray;
+    padding-left: 10px;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 95%;
+    height: 200px;
+}
+
+.instruction_input:hover {
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+}
+
+.link-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: serif;
+}
+
+.link-button:hover {
+    color: blue;
+}
+
+.compose {
+    color: black;
+}
+
+td {
+    padding-left: 10px;
+    min-width: 20px;
+}
+
+.btn_remove {
+    background-color: red;
+    width: 18px;
+    height: 18px;
+    font-size:x-small;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.recipe_container {
+    width: 100%;
+    height: 140px;
+    margin-top: 5px;
+}
+
+.recipe_container > div {
+    width: 45%;
+    margin-left: 5px;
+    overflow: auto;
+    height: 95%;
+    display: inline-block;
+}
+
+.envelope {
+    width: 70%;
+    float: left;
+}

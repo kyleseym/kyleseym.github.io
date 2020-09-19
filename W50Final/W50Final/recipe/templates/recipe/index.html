@@ -1,0 +1,154 @@
+{% extends "recipe/layout.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3" style="border: 1px solid gray; height: auto; min-height: 700px; margin: 10px">
+        <h2>Recipes</h2>
+        <div class="categories">
+            <div class="grouping" style="display: inline">Categories</div>&nbsp;&nbsp;
+            <div style="display: inline">
+                <form method="post" name="catselect" action="{% url 'cat' %}">    
+                    <select onchange="catlist()" name="category" class="box1">
+                        <option style="font-style: italic; display: none">All Recipes</option>
+                        {% for category in categories %}
+                            <option>{{ category.catname }}</option>
+                        {% endfor %} 
+                        <option>My Favorites</option>
+                    </select>
+                    <button type="submit" style="visibility: hidden" id="enter_form" />
+                </form>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="grouping" name="catgroup" id="catgroup">{{ Category }}</div>
+            <ul id="recipe_list">
+                {% for recipe in page_obj %}    
+                    <li>
+                        <div>
+                            <input type="hidden" id="{{ recipe.id }}" value="{{ recipe.title }}">
+                            <button data-recipe="{{ recipe.title }}" type="submit" class="link-button">{{ recipe.title }}</button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div style="position: absolute; bottom: 5px"><button style="display: block" class="btn btn-default" id="add">Add Recipe &raquo;</button></div>
+        <form action= {% url 'printrecipe' %} method="POST">
+            <div style="position: absolute; bottom: 5px">
+                <input type="hidden" id="printtitle" name="printtitle" />
+                <input type="submit" style="display: none" class="btn btn-default" id="print" value="Print" />
+            </div>
+        </form>    
+            <!-- pagination navigation -->
+        <div class="pagination">
+            <span class="step-links">
+
+                <span style="display: inline-block" class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+ 
+                {% if page_obj.has_previous %}
+                   <form style="display: inline-block"type="text" method="post" action="?page={{ page_obj.previous_page_number }}">
+                        <button type="submit" class="box3" style="width: 70px">previous</button>
+                        <input type="hidden" name="catname" value="{{ Category }}">
+                   </form>
+                {% endif %}               
+ 
+                {% if page_obj.has_next %}
+                    <form style="display: inline-block" type="text" method="post" action="?page={{ page_obj.next_page_number }}">
+                        <button type="submit" class="box3">next</button>
+                        <input type="hidden" name="catname" value="{{ Category }}">
+                    </form>
+                {% endif %}
+
+
+            </span>
+        </div>
+    </div>
+    <div class="col-md-8" id="recipe_detail" style="border: 1px solid gray; height: auto; min-height: 700px; margin: 10px">
+        <div id="default" style="display: block">
+            <div class="title_box">
+                <h1><i>The Seymour Cookbook</i></h1>
+            </div>
+            <img src="/static/images/media/ginger.jpg" style="width: 100%; float: left" alt="No Pix">
+        </div>
+        <div id="compose" style="display: none">
+            <h2>Specific Recipe</h2>
+            <div class="title_block">
+                <h4><b>Title:</b></h4>
+                <h4><b>Comment:</b></h4>
+                <h4><b>Category:</b></h4>
+                
+            </div>       
+            <div class="recipe_input">
+                <div>
+                    <input type="text" data-compose="title" id="title" name="title" class="text_box compose"/>
+                    <input type="text" id="comment" data-compose="comment" name="comment" class="text_box compose" />
+                    <input list="catlist" id="cat" class="box1 compose" name="category" placeholder="category">    
+                        <datalist id="catlist">
+                            {% for row in categories %}
+                                {% if row.catname != 'All Recipes' %}    
+                                    <option value="{{ row.catname }}">{{ row.catname }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </datalist> 
+                    <button id="like" class="box2">Add Favorite</button>
+                </div>
+            </div>   
+            <hr />
+            <div>
+                <div style="font-size: 20px; font-weight: bold; float: left; margin-right:20px">Ingredients:</div>
+                <input type="text" data-compose="quantity" id="quantity" class="text_box2"/>
+                <input list="unit_list" data-compose="unit" class="text_box2" id="unit" name="unit" placeholder ="measure unit">
+                    <datalist id="unit_list">
+                        {% for unit in units %}
+                            <option>{{ unit.measure }}</option>
+                        {% endfor %}  
+                    </datalist> 
+                <input list="ingredient_list" data-compose="ingredient" class="text_box3" name="ingredient" id="ingredient" placeholder ="ingredient">
+                    <datalist id="ingredient_list">
+                        {% for ingredient in ingredients %}
+                            <option>{{ ingredient.items }}</option>
+                        {% endfor %}  
+                    </datalist> 
+                <input type="button" class="btn" id="adding" value="Add">
+            </div>
+            <div class="recipe_container" id="list" data-ingredients="ingredient_list" name="ingredient_list">
+                <div>
+                    <table id="tablelist">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="tablelist2">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <hr />
+            <h3>Instructions:</h3>
+            <div class="text_area">
+                <textarea class="instruction_input compose" id="instruction" name="instruction" placeholder="enter instructions"></textarea>
+            </div>
+            <div style="position: absolute; bottom: 5px"><button style="display: block" id="send" class="btn btn-default">Submit &raquo;</button>&nbsp;</div>
+        </div>
+        <div style="position: absolute; bottom: 5px"><button style="display: none" id="edit" class="btn btn-default">Edit &raquo;</button></div>
+        <div style="position: absolute; bottom: 5px; margin-left: 200px">
+            <input type="hidden" id="recipeid" value="None" />
+            <div style="display: none; text-align: right" id="author"></div>
+            <div style="display: none; margin-left: 10px" id="timestamp"></div>
+            
+        </div>
+
+    </div>
+
+</div>
+   
+
+{% endblock %}
